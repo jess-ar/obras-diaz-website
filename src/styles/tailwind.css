@@ -1,4 +1,4 @@
-@import 'tailwindcss' source(none);
-@source '../**/*.{js,ts,jsx,tsx}';
+@import "tailwindcss";
 
+/* Plugin CSS */
 @import 'tw-animate-css';

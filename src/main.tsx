@@ -1,7 +1,11 @@
+import { createRoot } from 'react-dom/client';
+import App from '@/app/App';
+import '@/styles/index.css';
+import faviconUrl from '@/assets/logos/favicon.ico';
 
-  import { createRoot } from "react-dom/client";
-  import App from "./app/App.tsx";
-  import "./styles/index.css";
+const link = document.createElement('link');
+link.rel = 'icon';
+link.href = faviconUrl;
+document.head.appendChild(link);
 
-  createRoot(document.getElementById("root")!).render(<App />);
-  
+createRoot(document.getElementById('root')!).render(<App />);
