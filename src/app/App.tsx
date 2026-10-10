@@ -19,7 +19,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-white font-sans text-foreground">
       <Header current={page} setPage={navigate} />
-      <main id="main-content" className={page === 'inicio' ? '' : 'pt-16 lg:pt-20'}>
+      <main id="main-content">
         {page === 'inicio' && <HomePage setPage={navigate} />}
         {page === 'nosotros' && <AboutPage setPage={navigate} />}
         {page === 'galeria' && <GalleryPage />}
@@ -35,4 +35,3 @@ export default function App() {
     </div>
   );
 }
-

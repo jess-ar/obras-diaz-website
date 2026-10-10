@@ -1,105 +1,75 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Logo } from '@/components/ui/Logo';
-import { BtnPrimary } from '@/components/ui/Button';
-import { ACR } from '@/config/theme';
-import { useScrolled } from '@/hooks/useScrolled';
+import whiteLogoSrc from '@/assets/logos/logo-obras-diaz-white.png';
 import type { Page } from '@/types';
-import defaultLogoSrc from '@/assets/logos/logo-obras-diaz-default.png';
-import onDarkLogoSrc from '@/assets/logos/logo-obras-diaz-on-dark.png';
 
 interface HeaderProps {
   current: Page;
-  setPage: (p: Page) => void;
+  setPage: (page: Page) => void;
 }
+
+const links: { id: Page; label: string }[] = [
+  { id: 'inicio', label: 'Inicio' },
+  { id: 'nosotros', label: 'Sobre nosotros' },
+  { id: 'galeria', label: 'Galería de reformas' },
+  { id: 'trabaja', label: 'Trabaja con nosotros' },
+  { id: 'contacto', label: 'Contacto' },
+  { id: 'presupuesto', label: 'Pedir presupuesto' },
+];
 
 export function Header({ current, setPage }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const scrolled = useScrolled();
-  const isHero = current === 'inicio';
 
-  const onDark = isHero && !scrolled;
-  const headerBg = scrolled ? 'bg-white border-b border-[#E5E5E5] shadow-sm' : 'bg-transparent';
-  const headerLogo = onDark ? onDarkLogoSrc : defaultLogoSrc;
-
-  const nav = [
-    { id: 'inicio', label: 'Inicio' },
-    { id: 'nosotros', label: 'Sobre nosotros' },
-    { id: 'galeria', label: 'Galería' },
-    { id: 'trabaja', label: 'Trabaja con nosotros' },
-    { id: 'contacto', label: 'Contacto' },
-  ];
-
-  const go = (p: Page) => {
-    setPage(p);
+  const navigate = (page: Page) => {
+    setPage(page);
     setMobileOpen(false);
   };
 
+  const renderLinks = () => links.map(({ id, label }) => (
+    <button
+      key={id}
+      type="button"
+      onClick={() => navigate(id)}
+      aria-current={current === id ? 'page' : undefined}
+      className={`text-[13px] transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white ${current === id ? 'text-white' : 'text-white/60'}`}
+    >
+      {label}
+    </button>
+  ));
+
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerBg}`}>
-      <div className="max-w-[1200px] mx-auto px-6 lg:px-8 flex items-center justify-between h-16 lg:h-20">
-        {/* Logo */}
-        <button
-          onClick={() => go('inicio')}
-          className="focus-visible:outline-2 focus-visible:outline-offset-4 rounded-sm"
-          style={{ outlineColor: ACR }}
-          aria-label="Obras Díaz 2011 — ir al inicio"
-        >
-          <Logo src={headerLogo} height="3.25rem" />
-        </button>
-
-        {/* Desktop nav */}
-        <nav className="hidden lg:flex items-center gap-8" aria-label="Navegación principal">
-          {nav.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => go(item.id as Page)}
-              className={`text-[11px] font-semibold tracking-[0.2em] uppercase transition-all duration-200 hover:opacity-50 ${
-                current === item.id ? 'border-b border-current pb-0.5' : ''
-              } ${onDark ? 'text-white' : 'text-[#0A0A0A]'}`}
-            >
-              {item.label}
-            </button>
-          ))}
-          <BtnPrimary onClick={() => go('presupuesto')}>Pedir presupuesto</BtnPrimary>
-        </nav>
-
-        {/* Mobile toggle */}
-        <button
-          className={`lg:hidden p-2 -mr-2 ${onDark ? 'text-white' : 'text-[#0A0A0A]'}`}
-          onClick={() => setMobileOpen((v) => !v)}
-          aria-label={mobileOpen ? 'Cerrar menú' : 'Abrir menú'}
-          aria-expanded={mobileOpen}
-        >
-          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
-      </div>
-
-      {/* Mobile drawer */}
-      {mobileOpen && (
-        <div
-          className="lg:hidden bg-white border-t border-[#E5E5E5]"
-          role="navigation"
-          aria-label="Menú móvil"
-        >
-          {nav.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => go(item.id as Page)}
-              className={`w-full text-left px-6 py-4 text-[11px] font-semibold uppercase tracking-[0.2em] border-b border-[#F0F0F0] hover:bg-[#F8F8F8] transition-colors ${
-                current === item.id ? 'text-[#6E6E6E]' : 'text-[#0A0A0A]'
-              }`}
-            >
-              {item.label}
-            </button>
-          ))}
-          <div className="px-6 py-5">
-            <BtnPrimary onClick={() => go('presupuesto')} full>
-              Pedir presupuesto
-            </BtnPrimary>
-          </div>
+    <header className="sticky top-0 z-50 bg-[#0A0A0A] text-white">
+      <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
+        <div className="flex items-center justify-between gap-8 py-5">
+          <button
+            type="button"
+            onClick={() => navigate('inicio')}
+            aria-label="Obras Díaz 2011 — ir al inicio"
+            className="shrink-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+          >
+            <Logo src={whiteLogoSrc} height="4.25rem" />
+          </button>
+          <nav className="hidden xl:flex items-center gap-6" aria-label="Navegación principal">
+            {renderLinks()}
+          </nav>
+          <button
+            type="button"
+            className="xl:hidden p-2 text-white/60 hover:text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
+            onClick={() => setMobileOpen((open) => !open)}
+            aria-label={mobileOpen ? 'Cerrar menú' : 'Abrir menú'}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-navigation"
+          >
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
-      )}
+        {mobileOpen && (
+          <nav id="mobile-navigation" className="xl:hidden flex flex-col items-start gap-5 border-t border-white/8 py-6" aria-label="Navegación móvil">
+            {renderLinks()}
+          </nav>
+        )}
+      </div>
     </header>
   );
 }

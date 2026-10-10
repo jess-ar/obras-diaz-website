@@ -107,7 +107,7 @@ function InteriorHero({ title, subtitle, img }: { title: string; subtitle?: stri
       <div className="relative max-w-[1440px] mx-auto px-6 lg:px-12 pb-12 pt-28 w-full">
         <div
           className="text-[10px] tracking-[0.35em] uppercase mb-3 font-semibold"
-          style={{ color: AC }}
+          style={{ color: 'rgba(255, 255, 255, 0.7)' }}
         >
           Obras Díaz 2011, S.L.
         </div>
@@ -180,11 +180,11 @@ export function GalleryPage() {
       </div>
 
       {/* Grid */}
-      <section className="bg-[#F5F5F5] py-12 lg:py-16 min-h-[50vh]">
+      <section className="bg-[#6E6E6E] py-12 lg:py-16 min-h-[50vh]">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           {filtered.length === 0 ? (
             <div className="text-center py-28">
-              <p className="font-display text-2xl uppercase text-[#888888]">
+              <p className="font-display text-2xl uppercase text-white">
                 Sin proyectos en esta categoría
               </p>
             </div>

@@ -207,25 +207,25 @@ export function JobsPage() {
       </section>
 
       {/* Ofertas */}
-      <section className="bg-[#F5F5F5] py-20 lg:py-28">
+      <section className="bg-[#0A0A0A] py-20 lg:py-28">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <div className="mb-14">
-            <SectionLabel>Ofertas actuales</SectionLabel>
-            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase text-[#0A0A0A] leading-tight tracking-tight">
+            <SectionLabel dark>Ofertas actuales</SectionLabel>
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase text-white leading-tight tracking-tight">
               Posiciones abiertas
             </h2>
           </div>
-          <div className="space-y-px bg-[#E0E0E0]">
+          <div className="space-y-px bg-white/15">
             {JOBS.map((job, i) => (
               <article
                 key={i}
-                className="bg-white p-6 lg:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-[#F8F8F8] transition-colors"
+                className="bg-[#0A0A0A] p-6 lg:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-[#1A1A1A] transition-colors"
               >
                 <div>
-                  <h3 className="font-display font-bold text-lg uppercase tracking-wide text-[#0A0A0A] mb-2">
+                  <h3 className="font-display font-bold text-lg uppercase tracking-wide text-white mb-2">
                     {job.title}
                   </h3>
-                  <div className="flex flex-wrap items-center gap-2 text-[11px] text-[#666666] uppercase tracking-wide">
+                  <div className="flex flex-wrap items-center gap-2 text-[11px] text-white/70 uppercase tracking-wide">
                     <span>{job.dept}</span>
                     <span className="text-[#CCCCCC]">·</span>
                     <span>{job.location}</span>
@@ -233,7 +233,7 @@ export function JobsPage() {
                     <span>{job.type}</span>
                   </div>
                 </div>
-                <BtnOutline onClick={() => setActiveJob(job)}>Ver oferta</BtnOutline>
+                <BtnOutline dark onClick={() => setActiveJob(job)}>Ver oferta</BtnOutline>
               </article>
             ))}
           </div>

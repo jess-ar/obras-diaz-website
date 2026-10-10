@@ -112,11 +112,11 @@ export function ContactPage({ setPage }: ContactPageProps) {
               </div>
 
               {/* CTA presupuesto */}
-              <div className="border border-[#E5E5E5] p-6">
-                <p className="text-[13px] font-semibold text-[#0A0A0A] mb-1">
+              <div className="bg-[#0A0A0A] p-6">
+                <p className="text-[13px] font-semibold text-white mb-1">
                   ¿Quieres un presupuesto?
                 </p>
-                <p className="text-[12px] text-[#666666] mb-4 leading-relaxed">
+                <p className="text-[12px] text-white/70 mb-4 leading-relaxed">
                   Si lo que necesitas es un presupuesto para tu reforma, usa el formulario
                   específico. Te pedimos cuatro datos y te respondemos lo antes posible.
                 </p>
