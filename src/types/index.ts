@@ -5,9 +5,7 @@ export type Page =
   | 'nosotros'
   | 'galeria'
   | 'trabaja'
-  | 'contacto'
   | 'presupuesto'
-  | 'baja'
   | 'privacidad'
   | 'cookies'
   | 'legal';
@@ -18,12 +16,15 @@ export interface Service {
   desc: string;
 }
 
+export interface ProjectPhoto {
+  src: string;
+  alt: string;
+}
+
 export interface Project {
-  img: string;
+  id: string;
   name: string;
-  type: string;
-  location: string;
-  year: string;
+  photos: ProjectPhoto[];
 }
 
 export interface Stat {

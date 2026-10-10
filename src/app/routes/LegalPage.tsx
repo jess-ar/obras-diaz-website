@@ -1,3 +1,4 @@
+import { COMPANY_EMAIL, COMPANY_CIF } from '@/config/constants';
 import { ArrowRight } from 'lucide-react';
 import { InteriorHero } from '@/components/ui/Section';
 import type { Page } from '@/types';
@@ -11,7 +12,7 @@ const LEGAL_CONTENT: Record<
     sections: [
       {
         h: '1. Responsable del tratamiento',
-        body: `Obras Díaz 2011, S.L. (en adelante, «la Empresa»), con CIF B-XXXXXXXX y domicilio social en Barcelona, es la responsable del tratamiento de los datos personales recabados a través de este sitio web y de los formularios de contacto y solicitud de presupuesto.\n\nPuede contactar con nosotros en: info@obrasdiaz2011.es`,
+        body: `Obras Díaz 2011, S.L. (en adelante, «la Empresa»), con CIF ${COMPANY_CIF} y domicilio social en Barcelona, es la responsable del tratamiento de los datos personales recabados a través de este sitio web y de los formularios de contacto y solicitud de presupuesto.\n\nPuede contactar con nosotros en: ${COMPANY_EMAIL}`,
       },
       {
         h: '2. Datos que recabamos',
@@ -31,7 +32,7 @@ const LEGAL_CONTENT: Record<
       },
       {
         h: '6. Derechos del interesado',
-        body: `Puede ejercer en cualquier momento los siguientes derechos, dirigiendo un escrito a info@obrasdiaz2011.es con copia de su documento de identidad:\n\n• Acceso: conocer qué datos tratamos sobre usted.\n• Rectificación: corregir datos inexactos o incompletos.\n• Supresión («derecho al olvido»): solicitar la eliminación de sus datos.\n• Limitación del tratamiento: solicitar que suspendamos temporalmente el tratamiento.\n• Portabilidad: recibir sus datos en formato estructurado y legible.\n• Oposición: oponerse al tratamiento basado en interés legítimo.\n• Retirada del consentimiento: en cualquier momento, sin efecto retroactivo.\n\nSi considera que sus derechos no han sido atendidos, puede presentar una reclamación ante la Agencia Española de Protección de Datos (www.aepd.es).`,
+        body: `Puede ejercer en cualquier momento los siguientes derechos, dirigiendo un escrito a ${COMPANY_EMAIL} con copia de su documento de identidad:\n\n• Acceso: conocer qué datos tratamos sobre usted.\n• Rectificación: corregir datos inexactos o incompletos.\n• Supresión («derecho al olvido»): solicitar la eliminación de sus datos.\n• Limitación del tratamiento: solicitar que suspendamos temporalmente el tratamiento.\n• Portabilidad: recibir sus datos en formato estructurado y legible.\n• Oposición: oponerse al tratamiento basado en interés legítimo.\n• Retirada del consentimiento: en cualquier momento, sin efecto retroactivo.\n\nSi considera que sus derechos no han sido atendidos, puede presentar una reclamación ante la Agencia Española de Protección de Datos (www.aepd.es).`,
       },
       {
         h: '7. Seguridad',
@@ -64,7 +65,7 @@ const LEGAL_CONTENT: Record<
       },
       {
         h: '5. Contacto',
-        body: `Para cualquier consulta sobre nuestra política de cookies, puede contactarnos en info@obrasdiaz2011.es.`,
+        body: `Para cualquier consulta sobre nuestra política de cookies, puede contactarnos en ${COMPANY_EMAIL}.`,
       },
     ],
   },
@@ -73,7 +74,7 @@ const LEGAL_CONTENT: Record<
     sections: [
       {
         h: '1. Datos identificativos del titular',
-        body: `En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSI-CE), se facilitan los siguientes datos:\n\n• Denominación social: Obras Díaz 2011, S.L.\n• CIF: B-XXXXXXXX\n• Inscripción: Registro Mercantil de Barcelona\n• Correo electrónico: info@obrasdiaz2011.es\n• Zona de actuación: Barcelona y área metropolitana`,
+        body: `En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSI-CE), se facilitan los siguientes datos:\n\n• Denominación social: Obras Díaz 2011, S.L.\n• CIF: ${COMPANY_CIF}\n• Inscripción: Registro Mercantil de Barcelona\n• Correo electrónico: ${COMPANY_EMAIL}\n• Zona de actuación: Barcelona y área metropolitana`,
       },
       {
         h: '2. Objeto y ámbito de aplicación',

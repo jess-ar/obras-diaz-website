@@ -39,7 +39,7 @@ export function InteriorHero({ title, subtitle, img }: InteriorHeroProps) {
         >
           Obras Díaz 2011, S.L.
         </div>
-        <h1 className="font-display text-5xl lg:text-7xl font-black uppercase text-white leading-none tracking-tight">
+        <h1 className="font-display text-4xl sm:text-5xl lg:text-7xl font-semibold uppercase text-white leading-none tracking-tight">
           {title}
         </h1>
         {subtitle && (

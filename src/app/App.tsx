@@ -3,15 +3,17 @@ import { HomePage } from '@/features/home';
 import { AboutPage } from '@/features/about';
 import { GalleryPage } from '@/features/gallery';
 import { JobsPage } from '@/features/jobs';
-import { ContactPage, PresupuestoPage, UnsubscribePage } from '@/features/contact';
+import { PresupuestoPage } from '@/features/contact';
 import { LegalPage } from '@/app/routes/LegalPage';
 import { Header, Footer } from '@/components/layout';
-import type { Page } from '@/types';
+import type { Page, Project } from '@/types';
 
 export default function App() {
   const [page, setPage] = useState<Page>('inicio');
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const navigate = (p: Page) => {
+    setSelectedProject(null);
     setPage(p);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -20,13 +22,19 @@ export default function App() {
     <div className="min-h-screen bg-white font-sans text-foreground">
       <Header current={page} setPage={navigate} />
       <main id="main-content">
-        {page === 'inicio' && <HomePage setPage={navigate} />}
+        {page === 'inicio' && (
+          <HomePage
+            setPage={navigate}
+            onProjectSelect={(project) => {
+              navigate('galeria');
+              setSelectedProject(project);
+            }}
+          />
+        )}
         {page === 'nosotros' && <AboutPage setPage={navigate} />}
-        {page === 'galeria' && <GalleryPage />}
+        {page === 'galeria' && <GalleryPage initialProject={selectedProject} />}
         {page === 'trabaja' && <JobsPage />}
-        {page === 'contacto' && <ContactPage setPage={navigate} />}
         {page === 'presupuesto' && <PresupuestoPage />}
-        {page === 'baja' && <UnsubscribePage setPage={navigate} />}
         {page === 'privacidad' && <LegalPage page="privacidad" setPage={navigate} />}
         {page === 'cookies' && <LegalPage page="cookies" setPage={navigate} />}
         {page === 'legal' && <LegalPage page="legal" setPage={navigate} />}
