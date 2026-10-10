@@ -1,5 +1,5 @@
 {
   "rewrites": [
-    { "source": "/((?!assets/|projects/|home/|video/).*)", "destination": "/index.html" }
+    { "source": "/((?!assets/|projects/).*)", "destination": "/index.html" }
   ]
 }

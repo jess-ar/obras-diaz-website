@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react';
 import type { Page } from '@/types';
-import './about.css';
 
 // Editorial copy supplied by the client; confirm procedures before publication.
 const stages = [
@@ -17,7 +16,11 @@ export function AboutPage({ setPage }: { setPage: (page: Page) => void }) {
       (entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
-          entry.target.classList.add('about-reveal');
+          entry.target.classList.add(
+            'motion-safe:animate-in',
+            'motion-safe:slide-in-from-bottom-4',
+            'motion-safe:duration-700',
+          );
           observer.unobserve(entry.target);
         });
       },
@@ -28,38 +31,40 @@ export function AboutPage({ setPage }: { setPage: (page: Page) => void }) {
   }, []);
 
   return (
-    <div ref={root} className="about-page">
-      <section aria-labelledby="about-intro" className="bg-white pt-16 pb-20 lg:pt-24 lg:pb-28">
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
-          <p className="about-label mb-8 text-[#626262]">
+    <div ref={root} className="text-[#0A0A0A]">
+      <section aria-labelledby="about-intro" className="bg-white py-14 lg:py-16 lg:min-h-[calc(100svh-136px)] lg:flex lg:items-center">
+        <div className="w-full max-w-[1440px] mx-auto px-6 lg:px-12">
+          <p className="text-[0.7rem] tracking-[0.18em] uppercase mb-6 text-[#626262]">
             Sobre nosotros / Nuestra forma de trabajar
           </p>
-          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-            <div data-about-reveal className="lg:col-span-7 lg:pt-10">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <div data-about-reveal className="lg:col-span-7">
               <h1
                 id="about-intro"
                 className="font-display font-semibold text-4xl sm:text-6xl xl:text-7xl leading-[1.06] tracking-tight max-w-3xl"
               >
                 Cada obra empieza mucho antes de construir.
               </h1>
-              <p className="mt-8 max-w-md text-lg leading-relaxed text-[#555555]">
+              <p className="mt-6 max-w-md text-lg leading-relaxed text-[#555555]">
                 Escuchamos, estudiamos y planificamos cada proyecto antes de empezar.
               </p>
-              <p className="about-label mt-12 lg:mt-20 text-[#626262]">Obras Díaz 2011 SL</p>
+              <p className="text-[0.7rem] tracking-[0.18em] uppercase mt-8 text-[#626262]">
+                Obras Díaz 2011 SL
+              </p>
             </div>
-            <figure data-about-reveal className="lg:col-span-5 lg:mt-20">
-              <div className="aspect-[4/5] overflow-hidden bg-[#ECECEA]">
+            <figure data-about-reveal className="lg:col-span-5 w-full">
+              <div className="bg-[#ECECEA]">
                 <img
-                  src="/projects/casa-cerdanyola/005.webp"
-                  alt="Escalera helicoidal, arcos y estructura acristalada en Casa Cerdanyola"
+                  src="/projects/calle-valencia/011.webp"
+                  alt="Lavabos y pared de pavés en el interior de Calle Valencia"
                   width={720}
-                  height={910}
+                  height={476}
                   fetchPriority="high"
-                  className="about-photo"
+                  className="w-full h-auto object-contain"
                 />
               </div>
               <figcaption className="mt-3 text-xs leading-relaxed text-[#626262]">
-                Casa Cerdanyola · Detalle de un proyecto terminado.
+                Calle Valencia · Detalle de un proyecto terminado.
               </figcaption>
             </figure>
           </div>
@@ -69,7 +74,9 @@ export function AboutPage({ setPage }: { setPage: (page: Page) => void }) {
       <section aria-labelledby="about-process" className="bg-[#F1F1EF] py-16 lg:py-24">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <div data-about-reveal className="grid lg:grid-cols-12 gap-6 mb-14 lg:mb-20">
-            <p className="about-label lg:col-span-4 text-[#626262]">El proceso</p>
+            <p className="text-[0.7rem] tracking-[0.18em] uppercase lg:col-span-4 text-[#626262]">
+              El proceso
+            </p>
             <h2
               id="about-process"
               className="lg:col-span-8 font-display text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight tracking-tight"
@@ -83,9 +90,12 @@ export function AboutPage({ setPage }: { setPage: (page: Page) => void }) {
               <li
                 key={stage.title}
                 data-about-reveal
-                className={`about-step ${index === 1 ? 'md:mt-16' : index === 2 ? 'md:mt-32' : ''}`}
+                className={`relative border-t border-[#C9C9C9] pt-6 before:content-[''] before:absolute before:-top-1 before:left-0 before:w-[7px] before:h-[7px] before:bg-[#0A0A0A] ${index === 1 ? 'md:mt-16' : index === 2 ? 'md:mt-32' : ''}`}
               >
-                <span aria-hidden className="about-number font-display block mb-8">
+                <span
+                  aria-hidden
+                  className="tabular-nums text-[clamp(5rem,10vw,9rem)] leading-none tracking-[-0.08em] text-[#777777] font-display block mb-8"
+                >
                   0{index + 1}
                 </span>
                 <h3 className="font-display text-2xl lg:text-3xl font-semibold tracking-tight mb-4">
@@ -109,7 +119,7 @@ export function AboutPage({ setPage }: { setPage: (page: Page) => void }) {
                 height={1130}
                 loading="lazy"
                 decoding="async"
-                className="about-photo"
+                className="w-full h-full object-cover"
               />
             </div>
             <figcaption className="mt-3 text-xs leading-relaxed text-[#626262]">
@@ -117,7 +127,9 @@ export function AboutPage({ setPage }: { setPage: (page: Page) => void }) {
             </figcaption>
           </figure>
           <div data-about-reveal className="lg:col-span-7">
-            <p className="about-label text-[#626262] mb-8">Nuestra manera de hacer las cosas</p>
+            <p className="text-[0.7rem] tracking-[0.18em] uppercase text-[#626262] mb-8">
+              Nuestra manera de hacer las cosas
+            </p>
             <h2
               id="about-details"
               className="font-display text-5xl sm:text-6xl lg:text-7xl font-semibold leading-[1.05] tracking-tight mb-12 lg:mb-16"

@@ -3,7 +3,6 @@ import type { Page } from '@/types';
 import { HOME_TOUR, TOUR_CLIPS } from './homeTour';
 import { TourStop } from './TourStop';
 import { useScrollWorld } from './useScrollWorld';
-import './scrollWorld.css';
 
 export function ScrollWorld({ setPage }: { setPage: (page: Page) => void }) {
   const root = useRef<HTMLElement>(null);
@@ -75,17 +74,29 @@ export function ScrollWorld({ setPage }: { setPage: (page: Page) => void }) {
 
   if (staticMode)
     return (
-      <section aria-label="Calle Girona" className="bg-[#0A0A0A] text-white">
+      <section aria-label="Reformas de Obras Díaz" className="bg-[#0A0A0A] text-white">
         {HOME_TOUR.map((stop, index) => (
-          <article key={stop.id} className="tour-static relative overflow-hidden">
+          <article
+            key={stop.id}
+            data-tour-last={index === HOME_TOUR.length - 1 ? '' : undefined}
+            className="min-h-[max(640px,calc(100svh-108px))] relative overflow-hidden"
+          >
             <img
               src={stop.photo}
+              srcSet={stop.photoSrcSet}
+              sizes="100vw"
               alt={stop.alt}
               loading={index === 0 ? 'eager' : 'lazy'}
-              className="absolute inset-0 w-full h-full object-cover"
-              style={{ objectPosition: `${stop.focus}% center` }}
+              className="absolute inset-0 w-full h-full"
+              style={{
+                objectFit: stop.fit ?? 'cover',
+                objectPosition: `${stop.focus}% ${stop.verticalFocus ?? 50}%`,
+              }}
             />
-            <div aria-hidden className="tour-text-shade absolute left-0 bottom-0 pointer-events-none" />
+            <div
+              aria-hidden
+              className="absolute left-0 bottom-0 pointer-events-none w-[min(1100px,100%)] h-3/4 bg-[radial-gradient(ellipse_at_bottom_left,rgba(10,10,10,0.72)_0%,rgba(10,10,10,0.5)_35%,rgba(10,10,10,0)_72%)]"
+            />
             <TourStop stop={stop} index={index} active setPage={setPage} />
           </article>
         ))}
@@ -95,26 +106,32 @@ export function ScrollWorld({ setPage }: { setPage: (page: Page) => void }) {
   return (
     <section
       ref={root}
-      aria-label="Recorrido por Calle Girona"
-      className="tour-world bg-[#0A0A0A] text-white"
+      aria-label="Recorrido por nuestras reformas"
+      className="relative [--tour-header-height:108px] [--tour-scroll-pace:1.8] h-[calc((1+(var(--tour-count)-1)*var(--tour-scroll-pace))*max(540px,calc(100svh-var(--tour-header-height))))] motion-reduce:h-auto bg-[#0A0A0A] text-white"
       style={{ '--tour-count': HOME_TOUR.length } as CSSProperties}
     >
-      <div data-tour-stage className="tour-stage">
+      <div
+        data-tour-stage
+        className="sticky top-[var(--tour-header-height)] h-[max(540px,calc(100svh-var(--tour-header-height)))] overflow-hidden motion-reduce:relative motion-reduce:top-0"
+      >
         {HOME_TOUR.map(
           (stop, index) =>
             availableImages.includes(index) && (
               <img
                 key={stop.id}
                 src={TOUR_CLIPS[index]?.poster ?? stop.photo}
+                srcSet={TOUR_CLIPS[index]?.poster ? undefined : stop.photoSrcSet}
+                sizes="100vw"
                 alt={active === index ? stop.alt : ''}
                 aria-hidden={active !== index}
                 loading="eager"
                 fetchPriority={index === 0 ? 'high' : 'low'}
                 decoding="async"
-                className="absolute inset-0 w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full"
                 style={{
+                  objectFit: stop.fit ?? 'cover',
                   visibility: active === index ? 'visible' : 'hidden',
-                  objectPosition: `${stop.focus}% center`,
+                  objectPosition: `${stop.focus}% ${stop.verticalFocus ?? 50}%`,
                 }}
               />
             ),
@@ -136,7 +153,10 @@ export function ScrollWorld({ setPage }: { setPage: (page: Page) => void }) {
             style={{ visibility: 'hidden', objectPosition: `${HOME_TOUR[index].focus}% center` }}
           />
         ))}
-        <div aria-hidden className="tour-text-shade absolute left-0 bottom-0 pointer-events-none" />
+        <div
+          aria-hidden
+          className="absolute left-0 bottom-0 pointer-events-none w-[min(1100px,100%)] h-3/4 bg-[radial-gradient(ellipse_at_bottom_left,rgba(10,10,10,0.72)_0%,rgba(10,10,10,0.5)_35%,rgba(10,10,10,0)_72%)]"
+        />
         {HOME_TOUR.map((stop, index) => (
           <TourStop
             key={stop.id}

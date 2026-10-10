@@ -3,12 +3,15 @@
 export interface TourStopData {
   id: string;
   photo: string;
+  photoSrcSet?: string;
   alt: string;
   title: string;
   subtitle?: string;
   cta: string;
   page: Page;
   focus: number;
+  verticalFocus?: number;
+  fit?: 'cover' | 'contain';
 }
 export interface TourClip {
   src: string;
@@ -18,9 +21,11 @@ export interface TourClip {
 export const TOUR_CLIPS: (TourClip | null)[] = [null, null, null, null];
 export const HOME_TOUR: TourStopData[] = [
   {
-    id: 'salon',
-    photo: '/home/girona/001.webp',
-    alt: 'Salón de Calle Girona con chimenea y sofás',
+    id: 'escalera-cerdanyola',
+    photo: '/projects/casa-cerdanyola/escalera-central.webp',
+    photoSrcSet:
+      '/projects/casa-cerdanyola/escalera-central-thumb.webp 800w, /projects/casa-cerdanyola/escalera-central.webp 2880w',
+    alt: 'Escalera helicoidal de Casa Cerdanyola con arcos blancos, techo acristalado y suelo hidráulico',
     title: 'Tu casa,\na tu manera.',
     subtitle: 'Reformas integrales en Barcelona y alrededores.',
     cta: 'Solicitar presupuesto',
@@ -29,35 +34,40 @@ export const HOME_TOUR: TourStopData[] = [
   },
   {
     id: 'detalle',
-    photo: '/home/girona/004.webp',
+    photo: '/projects/calle-girona/reforma-girona-05.jpg',
     alt: 'Detalle del salón y la chimenea de Calle Girona',
     title: 'Construimos confianza.',
     cta: 'Sobre nosotros',
     page: 'nosotros',
     focus: 50,
+    verticalFocus: 72,
   },
   {
-    id: 'cocina',
-    photo: '/home/girona/008.webp',
-    alt: 'Cocina de Calle Girona con encimeras metálicas y muebles de madera',
+    id: 'salon-mariano-cubi',
+    photo: '/projects/calle-mariano-cubi/maria-cubi-05_Nero_AI_Image_Upscaler_Photo_Face.jpeg',
+    alt: 'Interior de Calle Mariano Cubí con sofá, suelo hidráulico y cocina abierta',
     title: 'Espacios que transformamos.',
     cta: 'Ver reformas',
     page: 'galeria',
     focus: 50,
+    verticalFocus: 65,
+    fit: 'cover',
   },
   {
-    id: 'salon-ventanas',
-    photo: '/home/girona/005.webp',
-    alt: 'Salón de Calle Girona con sofás junto a las ventanas',
+    id: 'interior-valencia',
+    photo: '/projects/calle-valencia/004.webp',
+    alt: 'Interior de Calle Valencia con pared de pavés y salida a la terraza',
     title: 'Trabaja con nosotros.',
     cta: 'Únete al equipo',
     page: 'trabaja',
     focus: 50,
+    verticalFocus: 72,
   },
   {
-    id: 'estancia-blanca',
-    photo: '/home/girona/016.webp',
-    alt: 'Estancia blanca de Calle Girona con encimera y estantes',
+    id: 'piscina-provenza',
+    photo: '/projects/calle-provenza/001.webp',
+    photoSrcSet: '/projects/calle-provenza/001-thumb.webp 800w, /projects/calle-provenza/001.webp 4032w',
+    alt: 'Interior de Calle Provenza con muro de piedra, escalera de madera y piscina acristalada',
     title: 'Hablemos de tu proyecto.',
     cta: 'Solicitar presupuesto',
     page: 'presupuesto',

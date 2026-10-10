@@ -7,7 +7,7 @@ export const PROJECTS: Project[] = [
     photos: [
       {
         src: '/projects/calle-girona/001.webp',
-        thumbnail: '/projects/calle-girona/001-thumb.webp',
+        thumbnail: '/projects/calle-girona/001.webp',
         alt: 'Calle Girona — fotografía 1',
         width: 720,
         height: 399,
@@ -231,8 +231,8 @@ export const PROJECTS: Project[] = [
         src: '/projects/calle-provenza/001.webp',
         thumbnail: '/projects/calle-provenza/001-thumb.webp',
         alt: 'Calle Provenza — fotografía 1',
-        width: 1600,
-        height: 900,
+        width: 4032,
+        height: 2268,
       },
       {
         src: '/projects/calle-provenza/002.webp',
@@ -1198,11 +1198,11 @@ export const PROJECTS: Project[] = [
     name: 'Casa Cerdanyola',
     photos: [
       {
-        src: '/projects/casa-cerdanyola/004.webp',
-        thumbnail: '/projects/casa-cerdanyola/004-thumb.webp',
+        src: '/projects/casa-cerdanyola/escalera-central.webp',
+        thumbnail: '/projects/casa-cerdanyola/escalera-central-thumb.webp',
         alt: 'Casa Cerdanyola — fotografía 4',
-        width: 720,
-        height: 480,
+        width: 2880,
+        height: 1920,
       },
       {
         src: '/projects/casa-cerdanyola/001.webp',

@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { ArrowLeft, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { ProjectList } from '@/components/ui/ProjectList';
+import { ProjectImage } from '@/components/ui/ProjectImage';
+import { PROJECTS } from '@/config/projects';
 import type { Project } from '@/types';
 export function GalleryPage({
   initialProject = null,
@@ -54,7 +56,7 @@ export function GalleryPage({
     };
   }, [photoIndex, photos.length]);
   return (
-    <section className="bg-white py-20 lg:py-28 min-h-[60vh]">
+    <section className="bg-white py-10 lg:py-14 min-h-[60vh]">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
         {project ? (
           <>
@@ -66,32 +68,25 @@ export function GalleryPage({
               <ArrowLeft size={16} />
               Todos los proyectos
             </button>
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-7xl font-semibold leading-tight mb-12">
+            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight tracking-tight mb-8">
               {project.name}
             </h1>
             {photos.length === 0 ? (
               <p className="text-[#666666] text-lg">Fotografías próximamente.</p>
             ) : (
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
                 {photos.map((photo, index) => (
                   <button
                     key={photo.src}
                     type="button"
+                    className="self-start text-left focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0A0A0A]"
                     aria-label={`Ampliar fotografía: ${photo.alt}`}
                     onClick={(event) => {
                       opener.current = event.currentTarget;
                       setPhotoIndex(index);
                     }}
                   >
-                    <img
-                      src={photo.thumbnail}
-                      alt={photo.alt}
-                      loading="lazy"
-                      decoding="async"
-                      width={photo.width}
-                      height={photo.height}
-                      className="w-full aspect-[4/3] object-cover"
-                    />
+                    <ProjectImage photo={photo} priority={index < 2} />
                   </button>
                 ))}
               </div>
@@ -99,9 +94,14 @@ export function GalleryPage({
           </>
         ) : (
           <>
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-7xl font-semibold leading-tight mb-12">
-              Proyectos
-            </h1>
+            <div className="flex items-end justify-between gap-6 mb-8 lg:mb-10">
+              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight tracking-tight">
+                Proyectos
+              </h1>
+              <p className="text-xs text-[#626262] pb-2 tabular-nums">
+                {String(PROJECTS.length).padStart(2, '0')} proyectos
+              </p>
+            </div>
             <ProjectList />
           </>
         )}
