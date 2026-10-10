@@ -18,7 +18,10 @@ export interface Service {
 
 export interface ProjectPhoto {
   src: string;
+  thumbnail: string;
   alt: string;
+  width: number;
+  height: number;
 }
 
 export interface Project {

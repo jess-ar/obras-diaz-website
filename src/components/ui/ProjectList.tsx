@@ -15,9 +15,12 @@ export function ProjectList({ onSelect }: { onSelect: (project: Project) => void
             {cover && (
               <div className="aspect-[4/3] overflow-hidden mb-4">
                 <img
-                  src={cover.src}
+                  src={cover.thumbnail}
                   alt={cover.alt}
                   loading="lazy"
+                  decoding="async"
+                  width={cover.width}
+                  height={cover.height}
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
               </div>

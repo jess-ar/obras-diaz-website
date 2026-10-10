@@ -74,9 +74,12 @@ export function GalleryPage({ initialProject = null }: { initialProject?: Projec
                     }}
                   >
                     <img
-                      src={photo.src}
+                      src={photo.thumbnail}
                       alt={photo.alt}
                       loading="lazy"
+                      decoding="async"
+                      width={photo.width}
+                      height={photo.height}
                       className="w-full aspect-[4/3] object-cover"
                     />
                   </button>
