@@ -1,8 +1,6 @@
 import { Instagram, Facebook } from 'lucide-react';
-import { Logo } from '@/components/ui/Logo';
 import { COMPANY_EMAIL, COMPANY_MAILTO } from '@/config/constants';
 import type { Page } from '@/types';
-import whiteLogoSrc from '@/assets/logos/logo-obras-diaz-white.png';
 
 const legalLinks: { page: Page; label: string }[] = [
   { page: 'privacidad', label: 'Privacidad' },
@@ -15,7 +13,6 @@ export function Footer({ setPage }: { setPage: (page: Page) => void }) {
     <footer className="bg-[#0A0A0A] text-white">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12 py-10 lg:py-12">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
-          <Logo src={whiteLogoSrc} height="4.25rem" />
           <div className="flex flex-wrap items-center gap-6">
             <a
               href={COMPANY_MAILTO}
