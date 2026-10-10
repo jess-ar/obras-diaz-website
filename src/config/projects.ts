@@ -1198,6 +1198,13 @@ export const PROJECTS: Project[] = [
     name: 'Casa Cerdanyola',
     photos: [
       {
+        src: '/projects/casa-cerdanyola/004.webp',
+        thumbnail: '/projects/casa-cerdanyola/004-thumb.webp',
+        alt: 'Casa Cerdanyola — fotografía 4',
+        width: 720,
+        height: 480,
+      },
+      {
         src: '/projects/casa-cerdanyola/001.webp',
         thumbnail: '/projects/casa-cerdanyola/001-thumb.webp',
         alt: 'Casa Cerdanyola — fotografía 1',
@@ -1217,13 +1224,6 @@ export const PROJECTS: Project[] = [
         alt: 'Casa Cerdanyola — fotografía 3',
         width: 720,
         height: 1103,
-      },
-      {
-        src: '/projects/casa-cerdanyola/004.webp',
-        thumbnail: '/projects/casa-cerdanyola/004-thumb.webp',
-        alt: 'Casa Cerdanyola — fotografía 4',
-        width: 720,
-        height: 480,
       },
       {
         src: '/projects/casa-cerdanyola/005.webp',

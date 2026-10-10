@@ -1,0 +1,42 @@
+﻿.tour-world {
+  --tour-header-height: 108px;
+  --tour-scroll-pace: 1.8;
+  position: relative;
+  height: calc(
+    (1 + (var(--tour-count) - 1) * var(--tour-scroll-pace)) *
+      max(540px, calc(100svh - var(--tour-header-height)))
+  );
+}
+.tour-stage {
+  position: sticky;
+  top: var(--tour-header-height);
+  height: max(540px, calc(100svh - var(--tour-header-height)));
+  overflow: hidden;
+}
+.tour-shade {
+  background: linear-gradient(
+    to top,
+    rgba(10, 10, 10, 0.85),
+    rgba(10, 10, 10, 0.3) 50%,
+    transparent 85%
+  );
+}
+.tour-static {
+  min-height: max(640px, calc(100svh - 108px));
+}
+@media (min-width: 1024px) {
+  .tour-shade {
+    background:
+      linear-gradient(to top, rgba(10, 10, 10, 0.65), transparent 80%),
+      linear-gradient(to right, rgba(10, 10, 10, 0.4), transparent 70%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tour-world {
+    height: auto;
+  }
+  .tour-stage {
+    position: relative;
+    top: 0;
+  }
+}
