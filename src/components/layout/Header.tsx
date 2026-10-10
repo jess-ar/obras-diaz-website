@@ -12,10 +12,9 @@ interface HeaderProps {
 const links: { id: Page; label: string }[] = [
   { id: 'inicio', label: 'Inicio' },
   { id: 'nosotros', label: 'Sobre nosotros' },
-  { id: 'galeria', label: 'Galería de reformas' },
+  { id: 'galeria', label: 'Proyectos' },
   { id: 'trabaja', label: 'Trabaja con nosotros' },
-  { id: 'contacto', label: 'Contacto' },
-  { id: 'presupuesto', label: 'Pedir presupuesto' },
+  { id: 'presupuesto', label: 'Solicitar presupuesto' },
 ];
 
 export function Header({ current, setPage }: HeaderProps) {
@@ -26,17 +25,18 @@ export function Header({ current, setPage }: HeaderProps) {
     setMobileOpen(false);
   };
 
-  const renderLinks = () => links.map(({ id, label }) => (
-    <button
-      key={id}
-      type="button"
-      onClick={() => navigate(id)}
-      aria-current={current === id ? 'page' : undefined}
-      className={`text-[13px] transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white ${current === id ? 'text-white' : 'text-white/60'}`}
-    >
-      {label}
-    </button>
-  ));
+  const renderLinks = () =>
+    links.map(({ id, label }) => (
+      <button
+        key={id}
+        type="button"
+        onClick={() => navigate(id)}
+        aria-current={current === id ? 'page' : undefined}
+        className={`text-[13px] transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white ${current === id ? 'text-white' : 'text-white/60'}`}
+      >
+        {label}
+      </button>
+    ));
 
   return (
     <header className="sticky top-0 z-50 bg-[#0A0A0A] text-white">
@@ -65,7 +65,11 @@ export function Header({ current, setPage }: HeaderProps) {
           </button>
         </div>
         {mobileOpen && (
-          <nav id="mobile-navigation" className="xl:hidden flex flex-col items-start gap-5 border-t border-white/8 py-6" aria-label="Navegación móvil">
+          <nav
+            id="mobile-navigation"
+            className="xl:hidden flex flex-col items-start gap-5 border-t border-white/8 py-6"
+            aria-label="Navegación móvil"
+          >
             {renderLinks()}
           </nav>
         )}
