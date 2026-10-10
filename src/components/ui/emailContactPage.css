@@ -1,0 +1,207 @@
+.email-page {
+  background: #f6f6f4;
+  color: #0a0a0a;
+  padding: 40px 0 64px;
+}
+.email-page-container {
+  max-width: 1440px;
+  margin: auto;
+  padding: 0 24px;
+}
+.email-page-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  border-top: 1px solid #cececb;
+  padding-top: 16px;
+  margin-bottom: 36px;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #626262;
+}
+.email-page-heading span {
+  display: none;
+}
+.email-page-layout {
+  display: grid;
+  gap: 40px;
+}
+.email-page-content {
+  position: relative;
+  padding-top: 20px;
+  min-width: 0;
+}
+.email-page-title {
+  position: relative;
+  max-width: 11ch;
+  font-size: clamp(38px, 6vw, 72px);
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+  font-weight: 800;
+  text-wrap: balance;
+}
+.email-page-description {
+  position: relative;
+  margin-top: 24px;
+  max-width: 30ch;
+  color: #555;
+  font-size: 17px;
+  line-height: 1.6;
+}
+.email-page-actions {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid #cececb;
+}
+.email-page-caption {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #626262;
+  margin-bottom: 12px;
+}
+.email-page-address {
+  display: inline-block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  font-size: clamp(16px, 2vw, 24px);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 6px;
+  transition: color 180ms ease;
+}
+.email-page-address:hover {
+  color: #666;
+}
+.email-page-copy {
+  display: inline-block;
+  margin-top: 24px;
+  padding: 15px 28px;
+  border: 1px solid #0a0a0a;
+  background: #0a0a0a;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  transition:
+    background 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+.email-page-copy:hover {
+  background: transparent;
+  color: #0a0a0a;
+  transform: translateY(-2px);
+}
+.email-page-copy:active {
+  transform: translateY(0);
+}
+.email-page-copy:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+.email-page :is(a, button):focus-visible {
+  outline: 2px solid #0a0a0a;
+  outline-offset: 6px;
+}
+.email-page-figure {
+  min-width: 0;
+}
+.email-page-image {
+  overflow: hidden;
+  background: #e6e6e3;
+}
+.email-page-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.email-page-figure figcaption {
+  margin-top: 12px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #626262;
+}
+@media (min-width: 640px) {
+  .email-page-heading span {
+    display: block;
+  }
+  .email-page {
+    padding-top: 56px;
+  }
+}
+@media (min-width: 1024px) {
+  .email-page {
+    padding: 56px 0 88px;
+  }
+  .email-page-container {
+    padding: 0 48px;
+  }
+  .email-page-heading {
+    margin-bottom: 48px;
+  }
+  .email-page-layout {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 48px;
+    align-items: center;
+  }
+  .email-page-content {
+    grid-column: 1 / 8;
+    grid-row: 1;
+    padding: 40px 0;
+  }
+  .email-page-figure {
+    grid-column: 8 / 13;
+    grid-row: 1;
+    margin-top: 48px;
+  }
+  .email-page--left .email-page-figure {
+    grid-column: 1 / 6;
+    margin-top: 0;
+  }
+  .email-page--left .email-page-content {
+    grid-column: 6 / 13;
+    padding-left: 16px;
+  }
+  .email-page-title {
+    font-size: clamp(52px, 4.6vw, 68px);
+  }
+  .email-page-actions {
+    margin-top: 40px;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .email-page-content {
+    animation: email-content-enter 650ms ease-out both;
+  }
+  .email-page-figure {
+    animation: email-photo-enter 850ms ease-out both;
+  }
+}
+@keyframes email-content-enter {
+  from {
+    transform: translateY(18px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes email-photo-enter {
+  from {
+    clip-path: inset(0 0 5% 0);
+    transform: translateY(24px);
+  }
+  to {
+    clip-path: inset(0);
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .email-page :is(a, button) {
+    transition: none;
+  }
+  .email-page-copy:hover {
+    transform: none;
+  }
+}

@@ -1,3 +1,5 @@
+import { Link } from 'react-router';
+import { PAGE_PATHS } from '@/app/routes/paths';
 import { Instagram, Facebook } from 'lucide-react';
 import { COMPANY_EMAIL, COMPANY_MAILTO } from '@/config/constants';
 import type { Page } from '@/types';
@@ -8,7 +10,7 @@ const legalLinks: { page: Page; label: string }[] = [
   { page: 'legal', label: 'Aviso legal' },
 ];
 
-export function Footer({ setPage }: { setPage: (page: Page) => void }) {
+export function Footer() {
   return (
     <footer className="bg-[#0A0A0A] text-white">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12 py-10 lg:py-12">
@@ -44,14 +46,9 @@ export function Footer({ setPage }: { setPage: (page: Page) => void }) {
           <p>© {new Date().getFullYear()} Obras Díaz 2011, S.L.</p>
           <nav aria-label="Enlaces legales" className="flex flex-wrap gap-x-6 gap-y-3">
             {legalLinks.map(({ page, label }) => (
-              <button
-                key={page}
-                type="button"
-                onClick={() => setPage(page)}
-                className="hover:text-white transition-colors"
-              >
+              <Link key={page} to={PAGE_PATHS[page]} className="hover:text-white transition-colors">
                 {label}
-              </button>
+              </Link>
             ))}
           </nav>
         </div>

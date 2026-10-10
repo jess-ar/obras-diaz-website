@@ -2,8 +2,18 @@ import { useEffect, useRef, useState } from 'react';
 import { ArrowLeft, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { ProjectList } from '@/components/ui/ProjectList';
 import type { Project } from '@/types';
-export function GalleryPage({ initialProject = null }: { initialProject?: Project | null }) {
+export function GalleryPage({
+  initialProject = null,
+  onProjectSelect,
+}: {
+  initialProject?: Project | null;
+  onProjectSelect?: (project: Project | null) => void;
+}) {
   const [project, setProject] = useState<Project | null>(initialProject);
+  const selectProject = (selected: Project | null) => {
+    if (onProjectSelect) onProjectSelect(selected);
+    else setProject(selected);
+  };
   const [photoIndex, setPhotoIndex] = useState<number | null>(null);
   const closeButton = useRef<HTMLButtonElement>(null);
   const opener = useRef<HTMLButtonElement | null>(null);
@@ -50,7 +60,7 @@ export function GalleryPage({ initialProject = null }: { initialProject?: Projec
           <>
             <button
               type="button"
-              onClick={() => setProject(null)}
+              onClick={() => selectProject(null)}
               className="flex items-center gap-2 text-sm mb-8 hover:text-[#6E6E6E]"
             >
               <ArrowLeft size={16} />
@@ -92,7 +102,7 @@ export function GalleryPage({ initialProject = null }: { initialProject?: Projec
             <h1 className="font-display text-4xl sm:text-5xl lg:text-7xl font-semibold leading-tight mb-12">
               Proyectos
             </h1>
-            <ProjectList onSelect={setProject} />
+            <ProjectList />
           </>
         )}
       </div>

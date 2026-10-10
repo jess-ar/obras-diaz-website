@@ -1,16 +1,20 @@
-import { CopyEmailButton } from '@/components/ui/CopyEmailButton';
+import { EmailContactPage } from '@/components/ui/EmailContactPage';
+
 export function JobsPage() {
   return (
-    <section className="bg-white py-20 lg:py-32 min-h-[60vh]">
-      <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
-        <h1 className="font-display text-4xl sm:text-5xl lg:text-7xl font-semibold leading-tight mb-8">
-          Trabaja con nosotros
-        </h1>
-        <p className="text-[#555555] text-lg leading-relaxed mb-10 max-w-xl">
-          ¿Quieres trabajar con nosotros? Envíanos tu currículum.
-        </p>
-        <CopyEmailButton className="inline-block bg-[#0A0A0A] text-white px-8 py-4 text-sm font-semibold hover:bg-[#333333] transition-colors focus-visible:outline-2 focus-visible:outline-offset-4" />
-      </div>
-    </section>
+    <EmailContactPage
+      label="Trabaja con nosotros"
+      title="El próximo proyecto puede empezar contigo."
+      description="¿Te gustaría formar parte del equipo? Envíanos tu currículum."
+      subject="Envío de currículum"
+      imageSide="right"
+      image={{
+        src: '/projects/casa-cerdanyola/015.webp',
+        alt: 'Puerta con contraventanas verdes y vista hacia la escalera interior de Casa Cerdanyola',
+        width: 720,
+        height: 1074,
+        caption: 'Casa Cerdanyola · Reforma terminada.',
+      }}
+    />
   );
 }
