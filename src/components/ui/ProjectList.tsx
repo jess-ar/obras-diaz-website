@@ -1,15 +1,14 @@
 ﻿import { PROJECTS } from '@/config/constants';
-import type { Project } from '@/types';
-export function ProjectList({ onSelect }: { onSelect: (project: Project) => void }) {
+import { Link } from 'react-router';
+export function ProjectList() {
   return (
     <div className="grid md:grid-cols-2 gap-x-12 gap-y-8">
       {PROJECTS.map((project) => {
         const cover = project.photos[0];
         return (
-          <button
+          <Link
             key={project.id}
-            type="button"
-            onClick={() => onSelect(project)}
+            to={`/proyectos/${project.id}`}
             className="text-left group focus-visible:outline-2 focus-visible:outline-offset-4"
           >
             {cover && (
@@ -33,7 +32,7 @@ export function ProjectList({ onSelect }: { onSelect: (project: Project) => void
                 {cover ? 'Ver proyecto' : 'Fotografías próximamente'}
               </p>
             </div>
-          </button>
+          </Link>
         );
       })}
     </div>
