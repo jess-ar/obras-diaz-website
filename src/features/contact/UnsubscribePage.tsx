@@ -27,7 +27,7 @@ export function UnsubscribePage({ setPage }: UnsubscribePageProps) {
   };
 
   return (
-    <div className="pt-20 lg:pt-24 min-h-screen bg-[#F8F8F8]">
+    <div className="pt-20 lg:pt-24 min-h-screen bg-white">
       <section className="max-w-lg mx-auto px-6 py-20">
         {sent ? (
           <div className="text-center">

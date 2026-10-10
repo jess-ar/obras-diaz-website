@@ -7,6 +7,7 @@ import { CtaBanner } from '@/components/ui/CtaBanner';
 import { SERVICES, PROJECTS, STATS, PROCESS, FAQS } from '@/config/constants';
 import { AC } from '@/config/theme';
 import type { Page } from '@/types';
+import heroImage from '@/assets/images/hero-black-apartment-kitchen.png';
 
 // ─── HOMEPAGE COMPONENT ────────────────────────────────────────────────────────
 
@@ -14,39 +15,36 @@ export function HomePage({ setPage }: { setPage: (p: Page) => void }) {
   return (
     <>
       {/* Hero */}
-      <section className="relative h-screen min-h-[640px] flex items-end bg-[#0A0A0A] overflow-hidden">
+      <section className="relative h-screen min-h-[640px] md:h-auto md:min-h-[calc(100svh-108px)] flex items-end md:items-start bg-[#0A0A0A] overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1762810931790-40b25e10b3e7?w=1920&h=1080&fit=crop&auto=format"
-          alt="Cocina reformada por Obras Díaz 2011"
-          className="absolute inset-0 w-full h-full object-cover opacity-55"
+          src={heroImage}
+          alt="Cocina luminosa con muebles negros, paredes blancas y encimera gris"
+          className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
-        <div className="absolute inset-x-0 top-0 h-32 pointer-events-none">
-          <div className="absolute left-0 top-0 h-full w-1/2 bg-gradient-to-r from-black/40 to-transparent" />
-          <div className="absolute right-0 top-0 h-full w-1/2 bg-gradient-to-l from-black/40 to-transparent" />
-        </div>
-        <div className="relative max-w-[1440px] mx-auto px-6 lg:px-12 pb-16 lg:pb-28 w-full">
+        <div className="absolute inset-y-0 left-0 w-2/3 bg-gradient-to-r from-white/80 via-white/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/75" />
+        <div className="relative max-w-[1440px] mx-auto px-6 lg:px-12 md:pt-8 pb-16 lg:pb-28 w-full">
           <div className="max-w-3xl">
             <div className="flex items-center gap-3 mb-5">
-              <div className="h-px w-8 bg-white/50" />
-              <span className="text-[10px] font-semibold tracking-[0.35em] uppercase text-white/70">
+              <div className="h-px w-8 bg-[#0A0A0A]" />
+              <span className="text-[10px] font-semibold tracking-[0.35em] uppercase text-[#0A0A0A]">
                 Desde 2011
               </span>
             </div>
-            <h1 className="font-display text-6xl lg:text-[88px] font-black uppercase text-white leading-none tracking-tight mb-6">
+            <h1 className="font-display text-6xl lg:text-[88px] font-black uppercase text-[#0A0A0A] leading-none tracking-tight mb-6">
               Tu reforma,
               <br />
               bien hecha.
               <br />
               Punto.
             </h1>
-            <p className="text-white/65 text-lg mb-10 max-w-lg leading-relaxed">
+            <p className="text-[#0A0A0A] text-lg mb-10 max-w-lg leading-relaxed">
               Reformas integrales de viviendas, cocinas, baños y locales en Barcelona y alrededores.
               Más de 14 años, equipo propio y presupuesto cerrado desde el primer día.
             </p>
             <div className="flex flex-wrap gap-4">
               <BtnPrimary onClick={() => setPage('presupuesto')}>Pedir presupuesto</BtnPrimary>
-              <BtnOutline dark onClick={() => setPage('galeria')}>
+              <BtnOutline onClick={() => setPage('galeria')}>
                 Ver proyectos
               </BtnOutline>
             </div>
@@ -97,27 +95,27 @@ export function HomePage({ setPage }: { setPage: (p: Page) => void }) {
       </section>
 
       {/* Servicios */}
-      <section className="bg-[#F5F5F5] py-20 lg:py-28">
+      <section className="bg-[#0A0A0A] py-20 lg:py-28">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <div className="mb-14">
-            <SectionLabel>Lo que hacemos</SectionLabel>
-            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase text-[#0A0A0A] leading-tight tracking-tight">
+            <SectionLabel dark>Lo que hacemos</SectionLabel>
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase text-white leading-tight tracking-tight">
               Servicios
             </h2>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#E0E0E0]">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/15">
             {SERVICES.map((s, i) => {
               const Icon = s.icon;
               return (
                 <article
                   key={i}
-                  className="bg-white p-8 lg:p-10 group hover:bg-[#0A0A0A] transition-colors duration-300 cursor-default"
+                  className="bg-[#0A0A0A] p-8 lg:p-10 group hover:bg-[#1A1A1A] transition-colors duration-300 cursor-default"
                 >
-                  <Icon size={26} className="mb-6 text-[#6E6E6E]" aria-hidden={true} />
-                  <h3 className="font-display text-xl font-bold uppercase tracking-wide text-[#0A0A0A] group-hover:text-white mb-3 transition-colors">
+                  <Icon size={26} className="mb-6 text-white/70" aria-hidden={true} />
+                  <h3 className="font-display text-xl font-bold uppercase tracking-wide text-white mb-3">
                     {s.title}
                   </h3>
-                  <p className="text-[13px] text-[#666666] group-hover:text-white/55 leading-relaxed transition-colors">
+                  <p className="text-[13px] text-white/70 leading-relaxed">
                     {s.desc}
                   </p>
                 </article>
@@ -207,7 +205,7 @@ export function HomePage({ setPage }: { setPage: (p: Page) => void }) {
       </section>
 
       {/* Proceso */}
-      <section className="bg-[#F5F5F5] py-20 lg:py-28">
+      <section className="bg-white py-20 lg:py-28">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <div className="mb-14">
             <SectionLabel>Cómo trabajamos</SectionLabel>
@@ -237,28 +235,28 @@ export function HomePage({ setPage }: { setPage: (p: Page) => void }) {
       </section>
 
       {/* FAQ */}
-      <section className="bg-white py-20 lg:py-28">
+      <section className="bg-[#6E6E6E] py-20 lg:py-28">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-5 gap-16">
             <div className="lg:col-span-2">
-              <SectionLabel>Preguntas frecuentes</SectionLabel>
-              <h2 className="font-display text-4xl font-black uppercase text-[#0A0A0A] leading-tight tracking-tight mb-5">
+              <SectionLabel dark>Preguntas frecuentes</SectionLabel>
+              <h2 className="font-display text-4xl font-black uppercase text-white leading-tight tracking-tight mb-5">
                 Resolvemos tus dudas
               </h2>
-              <p className="text-[#666666] leading-relaxed text-[15px] mb-8">
+              <p className="text-white leading-relaxed text-[15px] mb-8">
                 Si no encuentras lo que buscas, contacta directamente con nuestro equipo y te
                 atendemos en menos de 24 horas.
               </p>
-              <BtnPrimary onClick={() => setPage('contacto')}>Contactar ahora</BtnPrimary>
+              <BtnOutline dark onClick={() => setPage('contacto')}>Contactar ahora</BtnOutline>
             </div>
             <div className="lg:col-span-3">
-              <FaqAccordion items={FAQS} />
+              <FaqAccordion items={FAQS} dark />
             </div>
           </div>
         </div>
       </section>
 
-      <CtaBanner setPage={setPage} />
+      <CtaBanner setPage={setPage} light />
     </>
   );
 }

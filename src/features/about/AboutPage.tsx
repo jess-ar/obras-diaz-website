@@ -68,27 +68,27 @@ export function AboutPage({ setPage }: AboutPageProps) {
       </section>
 
       {/* Valores */}
-      <section className="bg-[#F5F5F5] py-20 lg:py-28">
+      <section className="bg-[#0A0A0A] py-20 lg:py-28">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <div className="mb-14">
-            <SectionLabel>Lo que nos define</SectionLabel>
-            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase text-[#0A0A0A] leading-tight tracking-tight">
+            <SectionLabel dark>Lo que nos define</SectionLabel>
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase text-white leading-tight tracking-tight">
               Valores
             </h2>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#E0E0E0]">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/15">
             {VALUES.map((v, i) => (
-              <div key={i} className="bg-white p-8 lg:p-10">
+              <div key={i} className="bg-[#0A0A0A] p-8 lg:p-10">
                 <div
                   className="font-display text-4xl font-black text-[#BBBBBB] mb-5 leading-none select-none"
                   aria-hidden="true"
                 >
                   {String(i + 1).padStart(2, '0')}
                 </div>
-                <h3 className="font-display font-bold uppercase tracking-wide text-[#0A0A0A] mb-3">
+                <h3 className="font-display font-bold uppercase tracking-wide text-white mb-3">
                   {v.title}
                 </h3>
-                <p className="text-[13px] text-[#666666] leading-relaxed">{v.desc}</p>
+                <p className="text-[13px] text-white/70 leading-relaxed">{v.desc}</p>
               </div>
             ))}
           </div>
@@ -96,7 +96,7 @@ export function AboutPage({ setPage }: AboutPageProps) {
       </section>
 
       {/* Misión / Visión */}
-      <section className="bg-[#0A0A0A] py-20 lg:py-28">
+      <section className="bg-white py-20 lg:py-28">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-6">
             {[
@@ -109,14 +109,14 @@ export function AboutPage({ setPage }: AboutPageProps) {
                 text: '"Ser la empresa de construcción de referencia en España, reconocida por la fiabilidad de sus obras, la satisfacción de sus clientes y el bienestar de su equipo humano."',
               },
             ].map((item) => (
-              <div key={item.label} className="border border-white/10 p-10 lg:p-14">
+              <div key={item.label} className="border border-[#E5E5E5] p-10 lg:p-14">
                 <div
                   className="text-[10px] tracking-[0.35em] uppercase font-semibold mb-6"
                   style={{ color: AC }}
                 >
                   {item.label}
                 </div>
-                <p className="text-white text-xl lg:text-2xl leading-relaxed font-light">
+                <p className="text-[#0A0A0A] text-xl lg:text-2xl leading-relaxed font-light">
                   {item.text}
                 </p>
               </div>
@@ -126,7 +126,7 @@ export function AboutPage({ setPage }: AboutPageProps) {
       </section>
 
       {/* Seguridad · Calidad · Sostenibilidad */}
-      <section className="bg-white py-20 lg:py-28">
+      <section className="bg-[#0A0A0A] py-20 lg:py-28">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-3 gap-12 lg:gap-16">
             {[
@@ -147,11 +147,11 @@ export function AboutPage({ setPage }: AboutPageProps) {
               },
             ].map((item, i) => (
               <div key={i}>
-                <SectionLabel>{item.label}</SectionLabel>
-                <h3 className="font-display text-2xl font-black uppercase text-[#0A0A0A] tracking-wide mb-4">
+                <SectionLabel dark>{item.label}</SectionLabel>
+                <h3 className="font-display text-2xl font-black uppercase text-white tracking-wide mb-4">
                   {item.title}
                 </h3>
-                <p className="text-[#555555] leading-relaxed text-[15px]">{item.text}</p>
+                <p className="text-white/70 leading-relaxed text-[15px]">{item.text}</p>
               </div>
             ))}
           </div>
@@ -159,12 +159,12 @@ export function AboutPage({ setPage }: AboutPageProps) {
       </section>
 
       {/* Certificaciones */}
-      <section className="bg-[#F5F5F5] py-10 border-y border-[#E5E5E5]">
+      <section className="bg-[#6E6E6E] py-10">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-12">
             <div
               className="text-[10px] font-semibold tracking-[0.3em] uppercase shrink-0"
-              style={{ color: AC }}
+              style={{ color: '#FFFFFF' }}
             >
               Certificaciones
             </div>
@@ -172,7 +172,7 @@ export function AboutPage({ setPage }: AboutPageProps) {
               {certs.map((c, i) => (
                 <span
                   key={i}
-                  className="text-[11px] font-medium uppercase tracking-wide text-[#555555] border border-[#D5D5D5] px-4 py-2 bg-white"
+                  className="text-[11px] font-medium uppercase tracking-wide text-white border border-white/40 px-4 py-2"
                 >
                   {c}
                 </span>
@@ -182,7 +182,7 @@ export function AboutPage({ setPage }: AboutPageProps) {
         </div>
       </section>
 
-      <CtaBanner setPage={setPage} />
+      <CtaBanner setPage={setPage} light />
     </>
   );
 }

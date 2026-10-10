@@ -2,13 +2,14 @@ import { AC } from '@/config/theme';
 
 interface SectionLabelProps {
   children: React.ReactNode;
+  dark?: boolean;
 }
 
-export function SectionLabel({ children }: SectionLabelProps) {
+export function SectionLabel({ children, dark = false }: SectionLabelProps) {
   return (
     <div className="flex items-center gap-3 mb-5">
-      <div className="h-px w-8" style={{ background: AC }} />
-      <span className="text-[10px] font-semibold tracking-[0.35em] uppercase" style={{ color: AC }}>
+      <div className="h-px w-8" style={{ background: dark ? '#FFFFFF' : AC }} />
+      <span className="text-[10px] font-semibold tracking-[0.35em] uppercase" style={{ color: dark ? '#FFFFFF' : AC }}>
         {children}
       </span>
     </div>
@@ -34,7 +35,7 @@ export function InteriorHero({ title, subtitle, img }: InteriorHeroProps) {
       <div className="relative max-w-[1440px] mx-auto px-6 lg:px-12 pb-12 pt-28 w-full">
         <div
           className="text-[10px] tracking-[0.35em] uppercase mb-3 font-semibold"
-          style={{ color: AC }}
+          style={{ color: 'rgba(255, 255, 255, 0.7)' }}
         >
           Obras Díaz 2011, S.L.
         </div>
