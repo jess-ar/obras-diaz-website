@@ -13,23 +13,18 @@
   height: max(540px, calc(100svh - var(--tour-header-height)));
   overflow: hidden;
 }
-.tour-shade {
-  background: linear-gradient(
-    to top,
-    rgba(10, 10, 10, 0.85),
-    rgba(10, 10, 10, 0.3) 50%,
-    transparent 85%
-  );
-}
 .tour-static {
   min-height: max(640px, calc(100svh - 108px));
 }
-@media (min-width: 1024px) {
-  .tour-shade {
-    background:
-      linear-gradient(to top, rgba(10, 10, 10, 0.65), transparent 80%),
-      linear-gradient(to right, rgba(10, 10, 10, 0.4), transparent 70%);
-  }
+.tour-text-shade {
+  width: min(1100px, 100%);
+  height: 75%;
+  background: radial-gradient(
+    ellipse at bottom left,
+    rgba(10, 10, 10, 0.72) 0%,
+    rgba(10, 10, 10, 0.5) 35%,
+    rgba(10, 10, 10, 0) 72%
+  );
 }
 @media (prefers-reduced-motion: reduce) {
   .tour-world {

@@ -85,7 +85,7 @@ export function ScrollWorld({ setPage }: { setPage: (page: Page) => void }) {
               className="absolute inset-0 w-full h-full object-cover"
               style={{ objectPosition: `${stop.focus}% center` }}
             />
-            <div className="tour-shade absolute inset-0" />
+            <div aria-hidden className="tour-text-shade absolute left-0 bottom-0 pointer-events-none" />
             <TourStop stop={stop} index={index} active setPage={setPage} />
           </article>
         ))}
@@ -136,7 +136,7 @@ export function ScrollWorld({ setPage }: { setPage: (page: Page) => void }) {
             style={{ visibility: 'hidden', objectPosition: `${HOME_TOUR[index].focus}% center` }}
           />
         ))}
-        <div className="tour-shade absolute inset-0" aria-hidden />
+        <div aria-hidden className="tour-text-shade absolute left-0 bottom-0 pointer-events-none" />
         {HOME_TOUR.map((stop, index) => (
           <TourStop
             key={stop.id}

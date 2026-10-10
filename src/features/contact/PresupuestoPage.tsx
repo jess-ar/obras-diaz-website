@@ -1,4 +1,4 @@
-import { COMPANY_EMAIL, COMPANY_MAILTO } from '@/config/constants';
+import { CopyEmailButton } from '@/components/ui/CopyEmailButton';
 
 export function PresupuestoPage() {
   return (
@@ -10,12 +10,9 @@ export function PresupuestoPage() {
         <p className="text-[#555555] text-lg leading-relaxed mb-10">
           Cuéntanos qué quieres reformar. Escríbenos por correo.
         </p>
-        <a
-          href={`${COMPANY_MAILTO}?subject=Solicitud%20de%20presupuesto`}
-          className="inline-block text-xl sm:text-2xl lg:text-3xl font-medium border-b border-[#0A0A0A] pb-2 hover:text-[#6E6E6E] hover:border-[#6E6E6E] transition-colors focus-visible:outline-2 focus-visible:outline-offset-4"
-        >
-          {COMPANY_EMAIL}
-        </a>
+        <CopyEmailButton
+          className="inline-block bg-[#0A0A0A] text-white px-8 py-4 text-sm font-semibold hover:bg-[#333333] transition-colors focus-visible:outline-2 focus-visible:outline-offset-4"
+        />
       </div>
     </section>
   );
