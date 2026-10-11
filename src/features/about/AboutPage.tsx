@@ -8,6 +8,17 @@ const stages = [
   { title: 'Entrega', text: 'Revisamos los acabados antes de dar la obra por finalizada.' },
 ];
 
+const services = [
+  'Electricidad',
+  'Fontanería',
+  'Climatización',
+  'Calefacción',
+  'Pintura',
+  'Carpintería de madera',
+  'Carpintería de aluminio',
+  'Albañilería',
+];
+
 export function AboutPage({ setPage }: { setPage: (page: Page) => void }) {
   const root = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -68,6 +79,40 @@ export function AboutPage({ setPage }: { setPage: (page: Page) => void }) {
               </figcaption>
             </figure>
           </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="about-services" className="bg-white py-16 lg:py-24">
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
+          <div data-about-reveal className="grid lg:grid-cols-12 gap-6 mb-12">
+            <p className="text-[0.7rem] tracking-[0.18em] uppercase lg:col-span-4 text-[#626262]">
+              Nuestros servicios
+            </p>
+            <div className="lg:col-span-8">
+              <h2
+                id="about-services"
+                className="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight tracking-tight"
+              >
+                Todo lo que necesita tu reforma.
+              </h2>
+              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[#555555]">
+                Realizamos reformas integrales de viviendas y locales, cocinas y baños en Barcelona
+                y alrededores. También llevamos a cabo trabajos de instalaciones, carpintería y
+                acabados para renovar tu espacio.
+              </p>
+            </div>
+          </div>
+          <ul className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8">
+            {services.map((service) => (
+              <li
+                key={service}
+                data-about-reveal
+                className="border-t border-[#D5D5D5] py-6 font-display text-xl lg:text-2xl"
+              >
+                {service}
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

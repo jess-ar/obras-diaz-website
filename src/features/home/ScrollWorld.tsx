@@ -87,10 +87,10 @@ export function ScrollWorld({ setPage }: { setPage: (page: Page) => void }) {
               sizes="100vw"
               alt={stop.alt}
               loading={index === 0 ? 'eager' : 'lazy'}
-              className="absolute inset-0 w-full h-full"
+              className={`absolute inset-0 w-full h-full ${index === 0 ? 'lg:[--hero-vertical-focus:40%]' : ''}`}
               style={{
                 objectFit: stop.fit ?? 'cover',
-                objectPosition: `${stop.focus}% ${stop.verticalFocus ?? 50}%`,
+                objectPosition: `${stop.focus}% var(--hero-vertical-focus, ${stop.verticalFocus ?? 50}%)`,
               }}
             />
             <div
@@ -107,7 +107,7 @@ export function ScrollWorld({ setPage }: { setPage: (page: Page) => void }) {
     <section
       ref={root}
       aria-label="Recorrido por nuestras reformas"
-      className="relative [--tour-header-height:108px] [--tour-scroll-pace:1.8] h-[calc((1+(var(--tour-count)-1)*var(--tour-scroll-pace))*max(540px,calc(100svh-var(--tour-header-height))))] motion-reduce:h-auto bg-[#0A0A0A] text-white"
+      className="relative [--tour-header-height:108px] [--tour-scroll-pace:1] lg:[--tour-scroll-pace:1.8] h-[calc((1+(var(--tour-count)-1)*var(--tour-scroll-pace))*max(540px,calc(100svh-var(--tour-header-height))))] motion-reduce:h-auto bg-[#0A0A0A] text-white"
       style={{ '--tour-count': HOME_TOUR.length } as CSSProperties}
     >
       <div
@@ -127,11 +127,11 @@ export function ScrollWorld({ setPage }: { setPage: (page: Page) => void }) {
                 loading="eager"
                 fetchPriority={index === 0 ? 'high' : 'low'}
                 decoding="async"
-                className="absolute inset-0 w-full h-full"
+                className={`absolute inset-0 w-full h-full ${index === 0 ? 'lg:[--hero-vertical-focus:40%]' : ''}`}
                 style={{
                   objectFit: stop.fit ?? 'cover',
                   visibility: active === index ? 'visible' : 'hidden',
-                  objectPosition: `${stop.focus}% ${stop.verticalFocus ?? 50}%`,
+                  objectPosition: `${stop.focus}% var(--hero-vertical-focus, ${stop.verticalFocus ?? 50}%)`,
                 }}
               />
             ),
@@ -173,7 +173,9 @@ export function ScrollWorld({ setPage }: { setPage: (page: Page) => void }) {
           <div className="h-px w-24 bg-white/30">
             <div data-tour-progress className="h-full bg-white origin-left scale-x-0" />
           </div>
-          <span className="ml-auto">Desliza para recorrer</span>
+          <span className={`ml-auto ${active === 0 ? 'lg:text-[#0A0A0A]' : 'text-white'}`}>
+            Desliza para recorrer
+          </span>
         </div>
       </div>
     </section>
