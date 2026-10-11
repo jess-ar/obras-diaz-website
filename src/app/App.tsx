@@ -18,6 +18,7 @@ import { NotFoundPage } from '@/app/routes/NotFoundPage';
 import { PAGE_PATHS, LEGACY_PATHS } from '@/app/routes/paths';
 import { PROJECTS } from '@/config/projects';
 import { Header, Footer } from '@/components/layout';
+import { Seo } from '@/components/Seo';
 import type { Page } from '@/types';
 
 function ProjectRoute() {
@@ -50,6 +51,7 @@ function SiteRoutes() {
 
   return (
     <div className="min-h-screen bg-white font-sans text-foreground">
+      <Seo />
       <Header current={current} />
       <main id="main-content">
         <Routes>

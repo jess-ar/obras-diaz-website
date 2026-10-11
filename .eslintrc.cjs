@@ -10,14 +10,12 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
     ecmaFeatures: { jsx: true },
-    project: ['./tsconfig.json'],
   },
   settings: {
     react: { version: 'detect' },
     'import/resolver': {
-      alias: {
-        map: [['@', './src']],
-        extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.css', '.svg'],
+      typescript: {
+        project: [`${__dirname}/tsconfig.json`, `${__dirname}/tsconfig.node.json`],
       },
     },
   },
@@ -30,6 +28,15 @@ module.exports = {
     'prettier',
   ],
   plugins: ['@typescript-eslint', 'react', 'react-hooks', 'jsx-a11y', 'import'],
+  overrides: [
+    {
+      files: ['src/**/*.ts', 'src/**/*.tsx'],
+      parserOptions: {
+        project: ['./tsconfig.json'],
+        tsconfigRootDir: __dirname,
+      },
+    },
+  ],
   rules: {
     'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',

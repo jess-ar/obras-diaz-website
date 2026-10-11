@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router';
 import { PROJECTS } from '@/config/projects';
-import { ProjectImage } from './ProjectImage';
+import { ProjectImage } from '@/components/ui/ProjectImage';
 
 export function ProjectList() {
   const root = useRef<HTMLDivElement>(null);

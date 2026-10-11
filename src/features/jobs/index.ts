@@ -1,1 +1,1 @@
-export { JobsPage } from './JobsPage';
+export { JobsPage } from '@/features/jobs/JobsPage';

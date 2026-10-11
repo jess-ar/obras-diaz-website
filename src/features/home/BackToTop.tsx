@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ArrowUp } from 'lucide-react';
-import { HOME_TOUR } from './homeTour';
+import { HOME_TOUR } from '@/features/home/homeTour';
 
 export function BackToTop() {
   const [visible, setVisible] = useState(false);

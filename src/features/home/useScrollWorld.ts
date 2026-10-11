@@ -1,7 +1,7 @@
-import { useEffect, useState, type RefObject } from 'react';
+import { useCallback, useEffect, useRef, useState, type RefObject } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { HOME_TOUR, TOUR_CLIPS } from './homeTour';
+import { HOME_TOUR, TOUR_CLIPS } from '@/features/home/homeTour';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,6 +16,8 @@ export function useScrollWorld(root: RefObject<HTMLElement | null>) {
   const [saveData, setSaveData] = useState(false);
   const [active, setActive] = useState(0);
   const [segment, setSegment] = useState(0);
+  const navigateStop = useRef<((index: number) => void) | null>(null);
+  const focusStop = useCallback((index: number) => navigateStop.current?.(index), []);
   useEffect(() => {
     const query = window.matchMedia('(prefers-reduced-motion: reduce)');
     const connection = (navigator as Navigator & { connection?: Connection }).connection;
@@ -87,6 +89,16 @@ export function useScrollWorld(root: RefObject<HTMLElement | null>) {
       onUpdate: (self) => render(self.progress),
       onRefresh: (self) => render(self.progress),
     });
+    let focusFrame = 0;
+    navigateStop.current = (index) => {
+      const progress = index / (HOME_TOUR.length - 1);
+      window.scrollTo({ top: trigger.start + (trigger.end - trigger.start) * progress, behavior: 'instant' });
+      render(progress);
+      cancelAnimationFrame(focusFrame);
+      focusFrame = requestAnimationFrame(() => {
+        texts[index]?.querySelector<HTMLAnchorElement>('a')?.focus({ preventScroll: true });
+      });
+    };
     const onLoaded = () => render(trigger.progress);
     videos.forEach((video) => {
       video.addEventListener('seeked', syncVideo);
@@ -100,6 +112,8 @@ export function useScrollWorld(root: RefObject<HTMLElement | null>) {
     if (header) observer.observe(header);
     render(trigger.progress);
     return () => {
+      navigateStop.current = null;
+      cancelAnimationFrame(focusFrame);
       trigger.kill();
       observer.disconnect();
       videos.forEach((video) => {
@@ -109,5 +123,5 @@ export function useScrollWorld(root: RefObject<HTMLElement | null>) {
       gsap.set(texts, { clearProps: 'transform' });
     };
   }, [root, reducedMotion, saveData]);
-  return { active, segment, staticMode: reducedMotion || saveData };
+  return { active, segment, staticMode: reducedMotion || saveData, focusStop };
 }

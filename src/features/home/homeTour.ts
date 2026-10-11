@@ -43,7 +43,7 @@ export const HOME_TOUR: TourStopData[] = [
   },
   {
     id: 'salon-mariano-cubi',
-    photo: '/projects/calle-mariano-cubi/maria-cubi-05_Nero_AI_Image_Upscaler_Photo_Face.jpeg',
+    photo: '/projects/calle-mariano-cubi/014.jpeg',
     alt: 'Interior de Calle Mariano Cubí con sofá, suelo hidráulico y cocina abierta',
     title: 'Espacios que transformamos.',
     cta: 'Ver reformas',
@@ -53,9 +53,9 @@ export const HOME_TOUR: TourStopData[] = [
     fit: 'cover',
   },
   {
-    id: 'interior-valencia',
-    photo: '/projects/calle-valencia/004.webp',
-    alt: 'Interior de Calle Valencia con pared de pavés y salida a la terraza',
+    id: 'cocina-mariano-cubi',
+    photo: '/projects/calle-mariano-cubi/maria-cubi-06.webp',
+    alt: 'Cocina de Calle Mariano Cubí con isla, azulejos claros y suelo hidráulico',
     title: 'Trabaja con nosotros.',
     cta: 'Únete al equipo',
     page: 'trabaja',
