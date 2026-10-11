@@ -1,4 +1,4 @@
-﻿import type { Page } from '@/types';
+import type { Page } from '@/types';
 import type { TourStopData } from './homeTour';
 
 export function TourStop({
@@ -22,11 +22,11 @@ export function TourStop({
     >
       <div className={`relative max-w-[1440px] mx-auto ${index === 0 ? 'h-full sm:h-auto' : ''}`}>
         <Title
-          className={`font-display whitespace-pre-line leading-[1.05] tracking-tight max-w-3xl ${index === 0 ? 'relative -top-[63px] sm:-top-[36px] lg:-top-[46px] h-[75.6px] sm:h-[100.8px] lg:h-[151.2px] text-[43.2px] sm:text-[57.6px] lg:text-[86.4px] font-extrabold text-[#0A0A0A]' : 'text-4xl sm:text-5xl lg:text-7xl font-semibold text-white'}`}
+          className={`font-display whitespace-pre-line leading-[1.05] tracking-tight max-w-3xl ${index === 0 ? 'relative top-3 sm:-top-[36px] lg:-top-[46px] h-[75.6px] sm:h-[100.8px] lg:h-[151.2px] text-[43.2px] sm:text-[57.6px] lg:text-[86.4px] font-extrabold text-[#0A0A0A]' : 'text-4xl sm:text-5xl lg:text-7xl font-semibold text-white'}`}
         >
           {stop.title}
         </Title>
-        <div className={index === 0 ? 'absolute inset-x-0 bottom-12 sm:static' : ''}>
+        <div className={index === 0 ? 'absolute inset-x-0 bottom-4 sm:static' : ''}>
           {stop.subtitle && <p className="mt-5 text-lg text-white/85">{stop.subtitle}</p>}
           <button
             type="button"

@@ -22,15 +22,14 @@ export const TOUR_CLIPS: (TourClip | null)[] = [null, null, null, null];
 export const HOME_TOUR: TourStopData[] = [
   {
     id: 'escalera-cerdanyola',
-    photo: '/projects/casa-cerdanyola/escalera-central.webp',
-    photoSrcSet:
-      '/projects/casa-cerdanyola/escalera-central-thumb.webp 800w, /projects/casa-cerdanyola/escalera-central.webp 2880w',
-    alt: 'Escalera helicoidal de Casa Cerdanyola con arcos blancos, techo acristalado y suelo hidráulico',
+    photo: '/projects/casa-cerdanyola/cerdanyola-17(1).jpeg',
+    alt: 'Planta superior de Casa Cerdanyola con barandilla blanca, paredes de espejo y suelo de madera',
     title: 'Tu casa,\na tu manera.',
     subtitle: 'Reformas integrales en Barcelona y alrededores.',
     cta: 'Solicitar presupuesto',
     page: 'presupuesto',
     focus: 50,
+    verticalFocus: 75,
   },
   {
     id: 'detalle',
