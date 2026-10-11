@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://obras-diaz.vercel.app/sitemap.xml

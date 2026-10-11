@@ -1,6 +1,6 @@
 import { COMPANY_EMAIL, COMPANY_MAILTO } from '@/config/constants';
 import type { CSSProperties } from 'react';
-import { CopyEmailButton } from './CopyEmailButton';
+import { CopyEmailButton } from '@/components/ui/CopyEmailButton';
 
 type EmailContactPageProps = {
   label: string;
