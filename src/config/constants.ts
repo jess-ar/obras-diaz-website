@@ -10,7 +10,7 @@ export const SERVICES: Service[] = [
   { icon: Layers, title: 'Interiores', desc: 'Salones, dormitorios y zonas de estar.' },
   { icon: Building2, title: 'Locales y oficinas', desc: 'Reforma de espacios de trabajo.' },
 ];
-export { PROJECTS } from './projects';
+export { PROJECTS } from '@/config/projects';
 export const VALUES: Value[] = [
   { title: 'Responsabilidad', desc: 'Un trabajo responsable.' },
   { title: 'Cuidado del detalle', desc: 'Atención a cada acabado.' },

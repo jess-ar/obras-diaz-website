@@ -1,5 +1,21 @@
 {
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/inicio", "destination": "/", "permanent": true },
+    { "source": "/nosotros", "destination": "/sobre-nosotros", "permanent": true },
+    { "source": "/galeria", "destination": "/proyectos", "permanent": true },
+    { "source": "/trabaja", "destination": "/trabaja-con-nosotros", "permanent": true },
+    { "source": "/presupuesto", "destination": "/solicitar-presupuesto", "permanent": true },
+    { "source": "/legal", "destination": "/aviso-legal", "permanent": true }
+  ],
   "rewrites": [
-    { "source": "/((?!assets/|projects/).*)", "destination": "/index.html" }
+    { "source": "/sobre-nosotros", "destination": "/sobre-nosotros/index.html" },
+    { "source": "/proyectos", "destination": "/proyectos/index.html" },
+    { "source": "/proyectos/:projectId(calle-girona|calle-mariano-cubi|calle-provenza|calle-sant-rafael|calle-valencia|casa-cerdanyola)", "destination": "/proyectos/:projectId/index.html" },
+    { "source": "/trabaja-con-nosotros", "destination": "/trabaja-con-nosotros/index.html" },
+    { "source": "/solicitar-presupuesto", "destination": "/solicitar-presupuesto/index.html" },
+    { "source": "/privacidad", "destination": "/privacidad/index.html" },
+    { "source": "/cookies", "destination": "/cookies/index.html" },
+    { "source": "/aviso-legal", "destination": "/aviso-legal/index.html" }
   ]
 }

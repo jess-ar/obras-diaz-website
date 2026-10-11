@@ -1,1 +1,1 @@
-export { PresupuestoPage } from './PresupuestoPage';
+export { PresupuestoPage } from '@/features/contact/PresupuestoPage';

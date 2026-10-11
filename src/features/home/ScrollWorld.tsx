@@ -1,12 +1,12 @@
 import { useEffect, useRef, type CSSProperties } from 'react';
 import type { Page } from '@/types';
-import { HOME_TOUR, TOUR_CLIPS } from './homeTour';
-import { TourStop } from './TourStop';
-import { useScrollWorld } from './useScrollWorld';
+import { HOME_TOUR, TOUR_CLIPS } from '@/features/home/homeTour';
+import { TourStop } from '@/features/home/TourStop';
+import { useScrollWorld } from '@/features/home/useScrollWorld';
 
 export function ScrollWorld({ setPage }: { setPage: (page: Page) => void }) {
   const root = useRef<HTMLElement>(null);
-  const { active, segment, staticMode } = useScrollWorld(root);
+  const { active, segment, staticMode, focusStop } = useScrollWorld(root);
   const availableImages = [
     Math.max(0, active - 1),
     active,
@@ -79,7 +79,7 @@ export function ScrollWorld({ setPage }: { setPage: (page: Page) => void }) {
           <article
             key={stop.id}
             data-tour-last={index === HOME_TOUR.length - 1 ? '' : undefined}
-            className="min-h-[max(640px,calc(100svh-108px))] relative overflow-hidden"
+            className="min-h-[max(640px,calc(100dvh-108px))] relative overflow-hidden"
           >
             <img
               src={stop.photo}
@@ -107,12 +107,12 @@ export function ScrollWorld({ setPage }: { setPage: (page: Page) => void }) {
     <section
       ref={root}
       aria-label="Recorrido por nuestras reformas"
-      className="relative [--tour-header-height:108px] [--tour-scroll-pace:1] lg:[--tour-scroll-pace:1.8] h-[calc((1+(var(--tour-count)-1)*var(--tour-scroll-pace))*max(540px,calc(100svh-var(--tour-header-height))))] motion-reduce:h-auto bg-[#0A0A0A] text-white"
+      className="relative [--tour-header-height:108px] [--tour-scroll-pace:1] lg:[--tour-scroll-pace:1.8] h-[calc((1+(var(--tour-count)-1)*var(--tour-scroll-pace))*max(540px,calc(100dvh-var(--tour-header-height))))] motion-reduce:h-auto bg-[#0A0A0A] text-white"
       style={{ '--tour-count': HOME_TOUR.length } as CSSProperties}
     >
       <div
         data-tour-stage
-        className="sticky top-[var(--tour-header-height)] h-[max(540px,calc(100svh-var(--tour-header-height)))] overflow-hidden motion-reduce:relative motion-reduce:top-0"
+        className="sticky top-[var(--tour-header-height)] h-[max(540px,calc(100dvh-var(--tour-header-height)))] overflow-hidden motion-reduce:relative motion-reduce:top-0"
       >
         {HOME_TOUR.map(
           (stop, index) =>
@@ -164,6 +164,13 @@ export function ScrollWorld({ setPage }: { setPage: (page: Page) => void }) {
             index={index}
             active={active === index}
             setPage={setPage}
+            onCtaKeyDown={(event) => {
+              if (event.key !== 'Tab' || event.altKey || event.ctrlKey || event.metaKey) return;
+              const next = index + (event.shiftKey ? -1 : 1);
+              if (next < 0 || next >= HOME_TOUR.length) return;
+              event.preventDefault();
+              focusStop(next);
+            }}
           />
         ))}
         <div
